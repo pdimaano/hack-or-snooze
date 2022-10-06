@@ -73,8 +73,16 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
-    // UNIMPLEMENTED: complete this function!
+  async addStory(user, newStory) {
+    // constructor({ storyId, title, author, url, username, createdAt })
+    //Get current user (this.user)
+    //newStory is object with title, author and url
+    let username = user;
+    let title = newStory.title;
+    let author = newStory.author;
+    let url = newStory.url;
+    let createdAt = new Date().valueOf();
+    return new Story({storyId, title, author, url, username, createdAt})
   }
 }
 
