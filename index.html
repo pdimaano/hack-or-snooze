@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hack or Snooze</title>
-  <link rel="stylesheet" 
+  <link rel="stylesheet"
         href="https://www.unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/user.css">
@@ -28,6 +28,23 @@
 </head>
 
 <body>
+
+<!-- Form for New Story (Title, author and URL) -->
+<form id="new-story" class="newstory-form hidden">
+  <h3>New Story</h3>
+  <div class="newstory-title">
+    <label for="title-name">Title</label>
+    <input type="text">
+  </div>
+  <div class="newstory-author">
+    <label for="title-author">Author</label>
+    <input type="text">
+  </div>
+  <div class="newstory-url">
+    <label for="url-name">URL</label>
+    <input type="text">
+  </div>
+</form>
 
 <!-- top navigation bar -->
 <nav>
@@ -39,6 +56,7 @@
     <a class="nav-link" href="#" id="nav-user-profile"></a>
     <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
+  <button id="show-story-form">Create New Story</button>
 </nav>
 
 <!-- area for stories (all stories, user stories, favorites) -->

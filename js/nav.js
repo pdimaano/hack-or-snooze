@@ -36,3 +36,13 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+/** Show new story form after clicking on button. */
+
+function newStoryClick(evt) {
+  console.debug("newStoryClick", evt);
+  evt.preventDefault();
+  $(".newstory-form").show();
+}
+
+$("#show-story-form").on("click", newStoryClick);
