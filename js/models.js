@@ -79,12 +79,12 @@ class StoryList {
     //newStory is object with title, author and url
     debugger;
     let data = {
-      "token":user.loginToken, 
+      "token":user.loginToken,
       "story":newStory
     }
     let response = await axios.post(`${BASE_URL}/stories`, data);
-    //console.log(response);  
-   
+    //console.log(response);
+
     return new Story(response)
 
     // return new Story({response.storyId, title, author, url, username, createdAt})
