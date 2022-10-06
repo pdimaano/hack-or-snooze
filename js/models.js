@@ -77,12 +77,17 @@ class StoryList {
     // constructor({ storyId, title, author, url, username, createdAt })
     //Get current user (this.user)
     //newStory is object with title, author and url
-    let username = user;
-    let title = newStory.title;
-    let author = newStory.author;
-    let url = newStory.url;
-    let createdAt = new Date().valueOf();
-    return new Story({storyId, title, author, url, username, createdAt})
+    debugger;
+    let data = {
+      "token":user.loginToken, 
+      "story":newStory
+    }
+    let response = await axios.post(`${BASE_URL}/stories`, data);
+    //console.log(response);  
+   
+    return new Story(response)
+
+    // return new Story({response.storyId, title, author, url, username, createdAt})
   }
 }
 
