@@ -74,7 +74,6 @@ class StoryList {
    */
 
   async addStory(user, newStory) {
-    // constructor({ storyId, title, author, url, username, createdAt })
     //Get current user (this.user)
     //newStory is object with title, author and url
     //debugger;
@@ -85,9 +84,8 @@ class StoryList {
     let response = await axios.post(`${BASE_URL}/stories`, data);
     //console.log(response);
 
-    return new Story(response)
+    return new Story(response);
 
-    // return new Story({response.storyId, title, author, url, username, createdAt})
   }
 }
 
