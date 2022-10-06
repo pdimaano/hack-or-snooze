@@ -42,6 +42,7 @@ function putStoriesOnPage() {
 
   $allStoriesList.empty();
 
+
   // loop through all of our stories and generate HTML for them
   for (let story of storyList.stories) {
     const $story = generateStoryMarkup(story);
@@ -59,13 +60,17 @@ async function submitNewStory(evt) {
   // Get data from new story form
   // Calls the addStory method
   // Place new story on page
-  evt.preventDefault();
+  //evt.preventDefault();
   let title = $("#story-title").val();
   let author = $("#story-author").val();
-  let url = $("#story-url").val();
-  let storyObject = {"title": title, "author": author, "url": url}
+  let url = $("#story-url").val();  //MUST BE ACTUAL URL TO WORK
+
+  let storyObject = {"title": title, "author": author, "url": url};
+
   let response = await storyList.addStory(currentUser, storyObject);
-  console.log(response);
+  //console.log(response);
+  // $allStoriesList.empty();
+  // putStoriesOnPage();
 }
 
 $("#new-story").on("submit", submitNewStory);

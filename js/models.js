@@ -77,7 +77,7 @@ class StoryList {
     // constructor({ storyId, title, author, url, username, createdAt })
     //Get current user (this.user)
     //newStory is object with title, author and url
-    debugger;
+    //debugger;
     let data = {
       "token":user.loginToken,
       "story":newStory
