@@ -46,3 +46,13 @@ function newStoryClick(evt) {
 }
 
 $("#show-story-form").on("click", newStoryClick);
+
+$allStoriesList.on("click", ".bi", markAsFavorite);
+
+function markAsFavorite(evt){
+  //if class is present, remove and removed from favorites
+  $(evt.target).toggleClass("bi-star-fill");
+  
+  //if class is present, remove, and add story to favorites
+  $(evt.target).toggleClass("bi-star");
+}

@@ -213,7 +213,6 @@ class User {
   */
 
   async addFavorite(story) {
-    let username = currentUser.username;
     let storyId = story.storyId;
     let data = {
       "token": currentUser.loginToken
@@ -231,14 +230,18 @@ class User {
   */
 
    async removeFavorite(story) {
-    let username = currentUser.username;
+    //error {status: 401, title: "Unauthorized", message: "Missing or invalid auth token."}
+    debugger;
     let storyId = story.storyId;
     let data = {
       "token": currentUser.loginToken
     }
-    let response = await axios.delete(
-      `${BASE_URL}/users/${username}/favorites/${storyId}`, data
-      );
+    //console.log(`${BASE_URL}/users/${username}/favorites/${storyId}`)
+    let response = await axios({
+      "method": "delete",
+      "url": `${BASE_URL}/users/${username}/favorites/${storyId}`,
+      "data": data
+    });
     console.log(response);
   }
 
