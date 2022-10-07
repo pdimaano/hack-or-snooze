@@ -224,7 +224,6 @@ class User {
   }
 
 
-
   /** Method to un-favorite a story. Takes in a story instance.
    *  Sends request to API to let server know about un-favorite action.
   */
@@ -245,5 +244,14 @@ class User {
     console.log(response);
   }
 
+  checkIfFavorite(storyId, checked) {
+    let targetStory = storyList.stories.filter(story => story.id === storyId);
+    console.log(targetStory);
+    // if (checked) {
+    //   addFavorite()
+    // } else {
+
+    // }
+  }
 }
 

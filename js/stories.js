@@ -25,7 +25,7 @@ function generateStoryMarkup(story) {
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
-        <i class="bi bi-star"></i>      
+        <i class="bi bi-star"></i>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -78,3 +78,18 @@ async function submitNewStory(evt) {
 }
 
 $("#new-story").on("submit", submitNewStory);
+
+$allStoriesList.on("click", ".bi", toggleFavorite);
+
+function toggleFavorite(evt){
+  // debugger;
+  let checked = $(evt.target).attr("bi-star-fill") !== undefined ? true : false;
+  //if class is present, remove and removed from favorites
+  $(evt.target).toggleClass("bi-star-fill bi-star");
+
+  //if class is present, remove, and add story to favorites
+  let storyId = $(evt.target).closest("li").attr("id");
+  currentUser.checkIfFavorite(storyId, checked);
+  // console.log(storyId);
+
+}
