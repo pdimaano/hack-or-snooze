@@ -207,4 +207,40 @@ class User {
       return null;
     }
   }
+
+  /** Method to favorite a story. Takes in a story instance.
+   *  Sends request to API to let server know about favorite action.
+  */
+
+  async addFavorite(story) {
+    let username = currentUser.username;
+    let storyId = story.storyId;
+    let data = {
+      "token": currentUser.loginToken
+    }
+    let response = await axios.post(
+      `${BASE_URL}/users/${username}/favorites/${storyId}`, data
+      );
+    console.log(response);
+  }
+
+
+
+  /** Method to un-favorite a story. Takes in a story instance.
+   *  Sends request to API to let server know about un-favorite action.
+  */
+
+   async removeFavorite(story) {
+    let username = currentUser.username;
+    let storyId = story.storyId;
+    let data = {
+      "token": currentUser.loginToken
+    }
+    let response = await axios.delete(
+      `${BASE_URL}/users/${username}/favorites/${storyId}`, data
+      );
+    console.log(response);
+  }
+
 }
+
