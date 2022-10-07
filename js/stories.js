@@ -73,7 +73,7 @@ async function submitNewStory(evt) {
   let $story = generateStoryMarkup(story);
   $allStoriesList.prepend($story);
 
-  //nothing returned
+  $newStoryForm.hide();
 }
 
 $("#new-story").on("submit", submitNewStory);

@@ -42,7 +42,7 @@ function updateNavOnLogin() {
 function newStoryClick(evt) {
   console.debug("newStoryClick", evt);
   evt.preventDefault();
-  $(".newstory-form").show();
+  $newStoryForm.show();
 }
 
 $("#show-story-form").on("click", newStoryClick);
