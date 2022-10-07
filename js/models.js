@@ -24,9 +24,8 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    //TODO: Built in with JS to translate URL into hostname part
-    return "hostname.com";
+    this.url = new URL(this.url);
+    return this.url.hostname;
   }
 }
 
@@ -78,16 +77,18 @@ class StoryList {
     //Get current user (this.user)
     //newStory is object with title, author and url
     //debugger;
+    // console.log("newStory arg: ", newStory);
     let data = {
-      "token":user.loginToken,
-      "story":newStory
+      "token": user.loginToken,
+      "story": newStory
     }
     let response = await axios.post(`${BASE_URL}/stories`, data);
-    //console.log(response);
-    //TODO: Save the new story instance to a variable and add to the stories
-    // property. When send to backend, also modify in-memory story list.
-    return new Story(response);
+    let story = new Story(response.data.story);
+    // console.log("response: ", response);
+    // console.log(story);
+    this.stories.unshift(story);
 
+    return story;
   }
 }
 
@@ -103,13 +104,13 @@ class User {
    */
 
   constructor({
-                username,
-                name,
-                createdAt,
-                favorites = [],
-                ownStories = []
-              },
-              token) {
+    username,
+    name,
+    createdAt,
+    favorites = [],
+    ownStories = []
+  },
+    token) {
     this.username = username;
     this.name = name;
     this.createdAt = createdAt;

@@ -20,7 +20,7 @@ async function getAndShowStoriesOnStart() {
  */
 
 function generateStoryMarkup(story) {
-  // console.debug("generateStoryMarkup", story);
+  console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
   return $(`
@@ -65,12 +65,15 @@ async function submitNewStory(evt) {
   let author = $("#story-author").val();
   let url = $("#story-url").val(); //MUST BE ACTUAL URL TO WORK
 
-  let storyObject = {"title": title, "author": author, "url": url};
+  let storyObject = { "title": title, "author": author, "url": url };
 
-  let response = await storyList.addStory(currentUser, storyObject);
-  // console.log(response);
-  // $allStoriesList.empty();
-  // putStoriesOnPage();
+  let story = await storyList.addStory(currentUser, storyObject);
+
+  // prepend response (a Story) to the storyList
+  let $story = generateStoryMarkup(story);
+  $allStoriesList.prepend($story);
+
+  //nothing returned
 }
 
 $("#new-story").on("submit", submitNewStory);
