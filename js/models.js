@@ -85,7 +85,7 @@ class StoryList {
     let response = await axios.post(`${BASE_URL}/stories`, data);
     //console.log(response);
     //TODO: Save the new story instance to a variable and add to the stories
-    // property.
+    // property. When send to backend, also modify in-memory story list.
     return new Story(response);
 
   }
