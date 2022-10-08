@@ -10,6 +10,7 @@ function navAllStories(evt) {
   console.debug("navAllStories", evt);
   evt.preventDefault();
   hidePageComponents();
+  getAndShowStoriesOnStart();
   putStoriesOnPage();
 }
 
@@ -47,3 +48,10 @@ function newStoryClick(evt) {
 
 $("#show-story-form").on("click", newStoryClick);
 
+$("#show-favorites").on("click", showFavorites);
+
+function showFavorites(){
+  console.debug("showFavorites");
+  storyList.stories = currentUser.favorites
+  putStoriesOnPage();
+}

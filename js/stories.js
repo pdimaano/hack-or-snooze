@@ -83,13 +83,18 @@ $allStoriesList.on("click", ".bi", toggleFavorite);
 
 function toggleFavorite(evt){
   // debugger;
-  let checked = $(evt.target).attr("bi-star-fill") !== undefined ? true : false;
-  //if class is present, remove and removed from favorites
   $(evt.target).toggleClass("bi-star-fill bi-star");
+  //console.log($(evt.target).attr("bi-star-fill"))
+  let targetStoryId = $(evt.target).closest("li").attr("id");
+    let targetStory = storyList.stories.filter(story=>story.storyId === targetStoryId);
+  if($(evt.target).hasClass("bi-star-fill") === true){
+    
+    //console.log(targetStory);
+    //console.log(currentUser);
+    currentUser.addFavorite(targetStory[0]);
+  }else{
+    currentUser.removeFavorite(targetStory[0])
+  }
 
-  //if class is present, remove, and add story to favorites
-  let storyId = $(evt.target).closest("li").attr("id");
-  currentUser.checkIfFavorite(storyId, checked);
-  // console.log(storyId);
 
 }

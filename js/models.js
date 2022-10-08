@@ -213,14 +213,15 @@ class User {
   */
 
   async addFavorite(story) {
+    //debugger;
     let storyId = story.storyId;
     let data = {
       "token": currentUser.loginToken
     }
     let response = await axios.post(
-      `${BASE_URL}/users/${username}/favorites/${storyId}`, data
+      `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`, data
       );
-    console.log(response);
+    //console.log(response);
   }
 
 
@@ -229,8 +230,7 @@ class User {
   */
 
    async removeFavorite(story) {
-    //error {status: 401, title: "Unauthorized", message: "Missing or invalid auth token."}
-    debugger;
+    //debugger;
     let storyId = story.storyId;
     let data = {
       "token": currentUser.loginToken
@@ -238,20 +238,10 @@ class User {
     //console.log(`${BASE_URL}/users/${username}/favorites/${storyId}`)
     let response = await axios({
       "method": "delete",
-      "url": `${BASE_URL}/users/${username}/favorites/${storyId}`,
+      "url": `${BASE_URL}/users/${currentUser.username}/favorites/${storyId}`,
       "data": data
     });
-    console.log(response);
-  }
-
-  checkIfFavorite(storyId, checked) {
-    let targetStory = storyList.stories.filter(story => story.id === storyId);
-    console.log(targetStory);
-    // if (checked) {
-    //   addFavorite()
-    // } else {
-
-    // }
+    //console.log(response);
   }
 }
 
